@@ -1,1 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Rahul & Sahul - Bhusa Order</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f1e8;
+  color:#222;
+}
+
+header{
+  background:#5b3a1e;
+  color:white;
+  text-align:center;
+  padding:28px 15px;
+}
+
+header h1{
+  margin:0;
+  font-size:32px;
+}
+
+header p{
+  margin:8px 0 0;
+}
+
+.container{
+  max-width:600px;
+  margin:25px auto;
+  padding:15px;
+}
+
+.card{
+  background:white;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #0002;
+}
+
+.info{
+  background:#fff7dc;
+  padding:14px;
+  border-radius:8px;
+  margin-bottom:20px;
+}
+
+h2{
+  color:#5b3a1e;
+}
+
+label{
+  display:block;
+  margin-top:15px;
+  font-weight:bold;
+}
+
+input,select,textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px;
+  margin-top:6px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  margin-top:22px;
+  padding:15px;
+  background:#25D366;
+  color:white;
+  border:0;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#1ebe5d;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  color:#666;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Rahul & Sahul</h1>
+  <p>🌾 Bhusa Order Service</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<div class="info">
+🌾 Fresh Bhusa Available<br>
+📍 Delivery: Kabre, Bhaktapur, Kathmandu
+</div>
+
+<h2>Place Your Order</h2>
+
+<label>Bhusa Type</label>
+<select id="type">
+  <option>Wheat Bhusa</option>
+  <option>Rice Bhusa</option>
+  <option>Other Bhusa</option>
+</select>
+
+<label>Number of Bora</label>
+<input id="quantity" type="number" min="1" placeholder="Example: 5">
+
+<label>Delivery Area</label>
+<select id="area">
+  <option>Kabre</option>
+  <option>Bhaktapur</option>
+  <option>Kathmandu</option>
+</select>
+
+<label>Your Name</label>
+<input id="name" type="text" placeholder="Enter your name">
+
+<label>Phone Number</label>
+<input id="phone" type="tel" placeholder="Enter phone number">
+
+<label>Delivery Address</label>
+<textarea id="address" rows="3" placeholder="Enter delivery address"></textarea>
+
+<label>Extra Note</label>
+<textarea id="note" rows="2" placeholder="Any special request"></textarea>
+
+<button onclick="placeOrder()">
+  📲 Order on WhatsApp
+</button>
+
+</div>
+</div>
+
+<footer>
+© 2026 Rahul & Sahul • Bhusa Order Service
+</footer>
+
+<script>
+
+function placeOrder(){
+
+  const type = document.getElementById("type").value;
+  const quantity = document.getElementById("quantity").value;
+  const area = document.getElementById("area").value;
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const note = document.getElementById("note").value;
+
+  if(!quantity || !name || !phone || !address){
+
+    alert("Please fill all required details.");
+
+    return;
+  }
+
+  const message =
+`🌾 NEW BHUSA ORDER
+
+Bhusa Type: ${type}
+Quantity: ${quantity} Bora
+Delivery Area: ${area}
+
+Customer Name: ${name}
+Phone: ${phone}
+
+Delivery Address:
+${address}
+
+Extra Note:
+${note || "None"}
+
+Thank you.
+Rahul & Sahul`;
+
+  const whatsappNumber = "9779816842321";
+
+  const whatsappURL =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(whatsappURL, "_blank");
+}
+
+</script>
+
+</body>
+</html>
